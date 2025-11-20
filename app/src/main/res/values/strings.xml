@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RestaurantAdvisor</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="restaurantadvisor">RestaurantAdvisor</string>
+    <string name="sign_in_or_create_an_account">Sign in \nor \nCreate an Account</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="continuetext">Continue</string>
+</resources>
