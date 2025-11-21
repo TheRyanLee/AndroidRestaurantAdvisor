@@ -34,4 +34,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
+    //implement scrollView with imageButton to view restaurants, and go to restaurant page.
+
+    //find way to create a new screen with variables that display details for a restaurant (hashmap to store objects?)
+
+
+
 }

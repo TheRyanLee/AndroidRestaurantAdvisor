@@ -31,6 +31,11 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
 
+    //create account feature, checks if e-mail exists in database, if not stores new info in database
+
+    //sign in feature, checks if email exists in database, if does, checks if password matches, if so signs into nextScreen.
+
+
 
 
 }
