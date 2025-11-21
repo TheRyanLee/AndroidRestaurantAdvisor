@@ -39,6 +39,9 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     //sign in feature, checks if email exists in database, if does, checks if password matches, if so signs into nextScreen.
+    public void signIn (View v){
+
+    }
 
 
 
