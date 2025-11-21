@@ -8,6 +8,21 @@
     android:background="@color/backgroundColor"
     tools:context=".MainActivity2">
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="246dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/black"
+        android:onClick="nextScreen"
+        android:text="@string/sign_in"
+        android:textSize="@dimen/Subheadingsize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintVertical_bias="0.114" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="347dp"
@@ -77,13 +92,14 @@
         android:layout_width="246dp"
         android:layout_height="100dp"
         android:backgroundTint="@color/black"
-        android:onClick="nextScreen"
-        android:text="@string/continuetext"
+        android:onClick="createAccount"
+        android:text="@string/create_account"
         android:textSize="@dimen/Subheadingsize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.202" />
+        app:layout_constraintVertical_bias="0.56" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
