@@ -11,4 +11,5 @@
     <string name="search">Search</string>
     <string name="sign_in">Sign In</string>
     <string name="create_account">Create Account</string>
+    <string name="past_orders">Past Orders</string>
 </resources>
