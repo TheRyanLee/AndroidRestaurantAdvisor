@@ -12,4 +12,6 @@
     <string name="sign_in">Sign In</string>
     <string name="create_account">Create Account</string>
     <string name="past_orders">Past Orders</string>
+    <string name="order_history">Order History</string>
+    <string name="reviews_left">Reviews Left</string>
 </resources>
