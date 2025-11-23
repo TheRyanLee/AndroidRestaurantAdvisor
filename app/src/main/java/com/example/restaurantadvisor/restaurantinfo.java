@@ -1,6 +1,8 @@
 package com.example.restaurantadvisor;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,5 +56,23 @@ public class restaurantinfo extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void goBack (View v)
+    {
+        Intent nextAct = new Intent(this, MainActivity.class);
+        startActivity(nextAct);
+    }
+
+    public void moveToCarryout (View v)
+    {
+        Intent nextAct = new Intent(this, carryout.class);
+        startActivity(nextAct);
+    }
+
+    public void moveToReviews (View v)
+    {
+        Intent nextAct = new Intent(this, reviews.class);
+        startActivity(nextAct);
     }
 }

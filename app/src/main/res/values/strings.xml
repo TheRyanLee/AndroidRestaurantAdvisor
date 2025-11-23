@@ -27,4 +27,8 @@
     <string name="wendys">wendys</string>
     <string name="todo">TODO</string>
     <string name="featured_restaurants">Featured Restaurants</string>
+    <string name="restaurant_reviews">Restaurant \nReviews</string>
+    <string name="order_carryout">Order Carryout</string>
+    <string name="image_of_restaurant">Image of restaurant</string>
+    <string name="back">Back</string>
 </resources>
