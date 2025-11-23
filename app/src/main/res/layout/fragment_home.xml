@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:contentDescription="@string/dairyqueen"
-                android:src="@drawable/dq" />
+                android:src="@drawable/dairyqueen" />
 
             <ImageButton
                 android:id="@+id/arbys"
