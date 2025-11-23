@@ -22,7 +22,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/displayReviews"
                 android:layout_width="368dp"
                 android:layout_height="1358dp"
                 android:layout_gravity="center_horizontal"

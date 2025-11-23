@@ -14,4 +14,17 @@
     <string name="past_orders">Past Orders</string>
     <string name="order_history">Order History</string>
     <string name="reviews_left">Reviews Left</string>
+    <string name="kfc">kfc</string>
+    <string name="arbys">arbys</string>
+    <string name="culvers">culvers</string>
+    <string name="dairyqueen">dairyqueen</string>
+    <string name="littlecaesars">littlecaesars</string>
+    <string name="mcdonalds">mcdonalds</string>
+    <string name="papajohns">papajohns</string>
+    <string name="pizzaranch">pizzaranch</string>
+    <string name="tacobell">tacobell</string>
+    <string name="subway">subway</string>
+    <string name="wendys">wendys</string>
+    <string name="todo">TODO</string>
+    <string name="featured_restaurants">Featured Restaurants</string>
 </resources>

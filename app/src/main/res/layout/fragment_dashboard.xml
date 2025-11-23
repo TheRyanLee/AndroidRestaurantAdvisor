@@ -38,7 +38,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/displayOrders"
                 android:layout_width="368dp"
                 android:layout_height="1358dp"
                 android:layout_gravity="center_horizontal"
