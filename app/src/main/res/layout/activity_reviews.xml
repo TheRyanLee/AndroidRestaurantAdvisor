@@ -8,6 +8,20 @@
     android:background="@color/backgroundColor"
     tools:context=".reviews">
 
+    <TextView
+        android:id="@+id/displayInfo2"
+        android:layout_width="387dp"
+        android:layout_height="486dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Reviews for a specific restaurant will go here will probably list first 3 reviews"
+        android:textSize="@dimen/smallertext"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.686" />
+
     <Button
         android:id="@+id/button8"
         android:layout_width="167dp"

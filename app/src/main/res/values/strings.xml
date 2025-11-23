@@ -31,4 +31,5 @@
     <string name="order_carryout">Order Carryout</string>
     <string name="image_of_restaurant">Image of restaurant</string>
     <string name="back">Back</string>
+    <string name="order">Order</string>
 </resources>
