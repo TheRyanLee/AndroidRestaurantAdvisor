@@ -13,15 +13,30 @@
         android:layout_width="246dp"
         android:layout_height="100dp"
         android:backgroundTint="@color/black"
-        android:onClick="nextScreen"
+        android:onClick="signIn"
         android:text="@string/sign_in"
         android:textSize="@dimen/Subheadingsize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.114" />
+        app:layout_constraintTop_toBottomOf="@+id/enterPassword"
+        app:layout_constraintVertical_bias="0.41" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="246dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/black"
+        android:onClick="createAccount"
+        android:text="@string/create_account"
+        android:textSize="@dimen/Subheadingsize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterPassword"
+        app:layout_constraintVertical_bias="0.85" />
 
     <TextView
         android:id="@+id/textView"
@@ -55,7 +70,7 @@
         tools:ignore="TextSizeCheck" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/enterPassword"
         android:layout_width="327dp"
         android:layout_height="58dp"
         android:autofillHints=""
@@ -67,11 +82,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/enterEmail"
         app:layout_constraintVertical_bias="0.028" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/enterEmail"
         android:layout_width="326dp"
         android:layout_height="56dp"
         android:layout_marginTop="59dp"
@@ -79,7 +94,7 @@
         android:ems="10"
         android:gravity="center_horizontal|center_vertical"
         android:hint="@string/enter_email"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.623"
@@ -87,19 +102,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.004" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="246dp"
-        android:layout_height="100dp"
-        android:backgroundTint="@color/black"
-        android:onClick="createAccount"
-        android:text="@string/create_account"
-        android:textSize="@dimen/Subheadingsize"
+    <TextView
+        android:id="@+id/dispalyResult"
+        android:layout_width="340dp"
+        android:layout_height="69dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:textSize="@dimen/smallertext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.656" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
