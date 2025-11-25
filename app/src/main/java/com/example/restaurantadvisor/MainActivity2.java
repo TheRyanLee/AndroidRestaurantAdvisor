@@ -14,6 +14,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public class MainActivity2 extends AppCompatActivity {
 
     @Override
@@ -28,9 +34,46 @@ public class MainActivity2 extends AppCompatActivity {
         });
     }
 
+
+    // This should make it so that you don't have to put the sqlite file into the device manager each time.
+
+    private void copyDatabaseIfNeeded() {
+        String dbName = "accounts.sqlite";
+        File dbFile = getDatabasePath(dbName);
+
+        if (dbFile.exists()) {
+            return;
+        }
+
+        dbFile.getParentFile().mkdirs();
+
+        try {
+            InputStream is = getAssets().open("databases/" + dbName);
+            OutputStream os = new FileOutputStream(dbFile);
+
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+
+            os.flush();
+            os.close();
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error copying preloaded database");
+        }
+    }
+
+
     //create account feature, checks if e-mail exists in database, if not stores new info in database
     public void createAccount (View v){
-        SQLiteDatabase myDB = SQLiteDatabase.openDatabase("/data/data/" + getPackageName() + "/databases/accounts.sqlite", null, SQLiteDatabase.OPEN_READWRITE);
+
+        copyDatabaseIfNeeded();
+
+        String dbPath = getDatabasePath("accounts.sqlite").getPath();
+        SQLiteDatabase myDB = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
         String tablename = "users";
 
         TextView tv = (TextView) findViewById(R.id.dispalyResult);
@@ -67,7 +110,10 @@ public class MainActivity2 extends AppCompatActivity {
     //sign in feature, checks if email exists in database, if does, checks if password matches, if so signs into nextScreen.
     public void signIn (View v){
 
-        SQLiteDatabase myDB = SQLiteDatabase.openDatabase("/data/data/" + getPackageName() + "/databases/accounts.sqlite", null, SQLiteDatabase.OPEN_READONLY);
+        copyDatabaseIfNeeded();
+
+        String dbPath = getDatabasePath("accounts.sqlite").getPath();
+        SQLiteDatabase myDB = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READONLY);
         String tablename = "users";
 
         TextView tv = (TextView) findViewById(R.id.dispalyResult);
