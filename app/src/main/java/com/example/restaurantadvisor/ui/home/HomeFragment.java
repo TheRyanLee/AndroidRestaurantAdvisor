@@ -90,6 +90,13 @@ public class HomeFragment extends Fragment {
 
     }
 
+    public void startSearch (View v){
+
+        // This will take in the user input for search and try and find the restaurant
+
+        return;
+    }
+
 
 
 }
