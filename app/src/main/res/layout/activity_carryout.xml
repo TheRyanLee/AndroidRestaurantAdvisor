@@ -10,16 +10,41 @@
 
     <TextView
         android:id="@+id/displayInfo3"
-        android:layout_width="387dp"
-        android:layout_height="486dp"
+        android:layout_width="97dp"
+        android:layout_height="464dp"
         android:layout_gravity="center_horizontal"
-        android:text="Will have to list the menu (may want to make this a scrollview) "
+        android:textSize="@dimen/smallertext"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062" />
+
+    <TextView
+        android:id="@+id/displayInfo4"
+        android:layout_width="211dp"
+        android:layout_height="477dp"
+        android:layout_gravity="center_horizontal"
         android:textSize="@dimen/smallertext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.059" />
+
+    <TextView
+        android:id="@+id/displayInfo5"
+        android:layout_width="97dp"
+        android:layout_height="464dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/smallertext"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.063" />
 
     <Button
         android:id="@+id/button9"

@@ -1,8 +1,12 @@
 package com.example.restaurantadvisor;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -67,6 +71,49 @@ public class carryout extends AppCompatActivity {
     {
         Intent nextAct = new Intent(this, MainActivity.class);
         startActivity(nextAct);
+    }
+
+    public void getRecords(View v){
+        TextView tvA = findViewById(R.id.displayInfo3);
+        TextView tvB = findViewById(R.id.displayInfo4);
+        TextView tvC = findViewById(R.id.displayInfo5);
+        try {
+            SQLiteDatabase myDB = openOrCreateDatabase("/data/data/" + getPackageName() +
+                    "/databases/workouts.sqlite", MODE_PRIVATE, null) ;
+            // This enables to use an SQL CREATE if we so choose
+            String getorderNumbers = "SELECT ItemId FROM culvers";
+            Cursor crs = myDB.rawQuery(getorderNumbers,null);
+            String orderNumString = "";
+            if (crs.moveToFirst())
+                do {
+                    orderNumString += crs.getString(0) + "\n";
+                } while(crs.moveToNext());
+            else {
+                orderNumString = "No records in the database"; //crs.moveToFirst failed
+                //tv.setText(minutesString);
+            }
+            crs.close();
+            tvC.setText(orderNumString);
+            String getItems = "SELECT minutes FROM ItemName";
+            Cursor crs2 = myDB.rawQuery(getItems,null);
+            String minutesString = "";
+            if (crs2.moveToFirst())
+                do {
+                    minutesString += crs2.getString(0) + "\n";
+                } while(crs2.moveToNext());
+            else {
+                minutesString = "No records in the database"; //crs.moveToFirst failed
+                //tv.setText(minutesString);
+            }
+            tvA.setText(minutesString);
+            crs2.close();
+            myDB.close();
+
+        }
+        catch( SQLiteException e) {
+            tvC.setText(e.getMessage());
+        }
+
     }
 
 
