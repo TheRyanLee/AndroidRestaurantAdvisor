@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class carryout extends AppCompatActivity {
+    private String restaurantName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class carryout extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_carryout);
 
+        restaurantName = getIntent().getStringExtra("restaurantname");
 
         String dbName = "restaurantmenus.sqlite";
         File dbFile = getDatabasePath(dbName);
@@ -82,7 +84,7 @@ public class carryout extends AppCompatActivity {
             SQLiteDatabase myDB = openOrCreateDatabase("/data/data/" + getPackageName() +
                     "/databases/restaurantmenus.sqlite", MODE_PRIVATE, null) ;
             // This enables to use an SQL CREATE if we so choose
-            String getorderNumbers = "SELECT ItemId FROM culvers";
+            String getorderNumbers = "SELECT ItemId FROM " + restaurantName;
             Cursor crs = myDB.rawQuery(getorderNumbers,null);
             String orderNumString = "";
             if (crs.moveToFirst())
@@ -95,7 +97,7 @@ public class carryout extends AppCompatActivity {
             }
             crs.close();
             tvA.setText(orderNumString);
-            String getItems = "SELECT ItemName FROM culvers";
+            String getItems = "SELECT ItemName FROM " + restaurantName;
             Cursor crs2 = myDB.rawQuery(getItems,null);
             String minutesString = "";
             if (crs2.moveToFirst())
@@ -108,7 +110,7 @@ public class carryout extends AppCompatActivity {
             }
             tvB.setText(minutesString);
             crs2.close();
-            String getPrice = "SELECT Price FROM culvers";
+            String getPrice = "SELECT Price FROM " + restaurantName;
             Cursor crs3 = myDB.rawQuery(getPrice,null);
             String priceString = "";
             if (crs3.moveToFirst())
