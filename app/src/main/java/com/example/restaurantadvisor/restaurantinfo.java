@@ -25,14 +25,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class restaurantinfo extends AppCompatActivity {
-
+    private String restaurantName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_restaurantinfo);
 
-        String restaurantName = getIntent().getStringExtra("restaurantname");
+        restaurantName = getIntent().getStringExtra("restaurantname");
         String cRestaurantName = restaurantName.substring(0,1).toUpperCase() + restaurantName.substring(1);
 
         TextView tv = (TextView) findViewById(R.id.dispalyRestaurantName);
@@ -130,6 +130,7 @@ public class restaurantinfo extends AppCompatActivity {
     public void moveToCarryout (View v)
     {
         Intent nextAct = new Intent(this, carryout.class);
+        nextAct.putExtra("restaurantname", restaurantName);
         startActivity(nextAct);
     }
 
