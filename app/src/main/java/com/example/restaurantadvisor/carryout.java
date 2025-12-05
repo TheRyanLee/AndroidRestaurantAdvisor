@@ -63,6 +63,7 @@ public class carryout extends AppCompatActivity {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            getRecords(v);
             return insets;
         });
     }
@@ -79,22 +80,22 @@ public class carryout extends AppCompatActivity {
         TextView tvC = findViewById(R.id.displayInfo5);
         try {
             SQLiteDatabase myDB = openOrCreateDatabase("/data/data/" + getPackageName() +
-                    "/databases/workouts.sqlite", MODE_PRIVATE, null) ;
+                    "/databases/restaurantmenus.sqlite", MODE_PRIVATE, null) ;
             // This enables to use an SQL CREATE if we so choose
             String getorderNumbers = "SELECT ItemId FROM culvers";
             Cursor crs = myDB.rawQuery(getorderNumbers,null);
             String orderNumString = "";
             if (crs.moveToFirst())
                 do {
-                    orderNumString += crs.getString(0) + "\n";
+                    orderNumString += crs.getString(0) + "\n\n";
                 } while(crs.moveToNext());
             else {
                 orderNumString = "No records in the database"; //crs.moveToFirst failed
                 //tv.setText(minutesString);
             }
             crs.close();
-            tvC.setText(orderNumString);
-            String getItems = "SELECT minutes FROM ItemName";
+            tvA.setText(orderNumString);
+            String getItems = "SELECT ItemName FROM culvers";
             Cursor crs2 = myDB.rawQuery(getItems,null);
             String minutesString = "";
             if (crs2.moveToFirst())
@@ -105,8 +106,21 @@ public class carryout extends AppCompatActivity {
                 minutesString = "No records in the database"; //crs.moveToFirst failed
                 //tv.setText(minutesString);
             }
-            tvA.setText(minutesString);
+            tvB.setText(minutesString);
             crs2.close();
+            String getPrice = "SELECT Price FROM culvers";
+            Cursor crs3 = myDB.rawQuery(getPrice,null);
+            String priceString = "";
+            if (crs3.moveToFirst())
+                do {
+                    priceString += crs3.getString(0) + "\n";
+                } while(crs3.moveToNext());
+            else {
+                priceString = "No records in the database"; //crs.moveToFirst failed
+                //tv.setText(minutesString);
+            }
+            tvC.setText(priceString);
+            crs3.close();
             myDB.close();
 
         }
