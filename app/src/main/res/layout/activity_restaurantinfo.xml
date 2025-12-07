@@ -13,6 +13,7 @@
         android:layout_width="379dp"
         android:layout_height="287dp"
         android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal|center_vertical"
         android:text="Restaurant Info Will Display Here (Data like Address, Phone Number, Email, Hours of Operation, ETC). Will have to pull from a database"
         android:textSize="@dimen/smallertext"
         app:layout_constraintBottom_toBottomOf="parent"
