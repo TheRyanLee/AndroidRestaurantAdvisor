@@ -10,13 +10,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class reviews extends AppCompatActivity {
+public class addReview extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_reviews);
+        setContentView(R.layout.activity_add_review);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -24,18 +24,15 @@ public class reviews extends AppCompatActivity {
         });
     }
 
-    public void goBackOne (View v)
+    public void newReview(View v)
     {
-        Intent nextAct = new Intent(this, MainActivity.class);
-        startActivity(nextAct);
+        // Have to add the code to add a review to a database
     }
 
-
-    public void addReview (View v)
+    public void goBack1 (View v)
     {
-        Intent nextAct = new Intent(this, addReview.class);
+        Intent nextAct = new Intent(this, reviews.class);
         startActivity(nextAct);
     }
-
 
 }

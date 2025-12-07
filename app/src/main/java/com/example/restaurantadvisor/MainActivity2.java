@@ -132,8 +132,17 @@ public class MainActivity2 extends AppCompatActivity {
         String query = "SELECT * FROM " + tablename +  " WHERE email = ?";
         Cursor crs = myDB.rawQuery(query, new String[]{email});
         if(crs.moveToFirst()){
-            Intent nextAct = new Intent(this, MainActivity.class);
-            startActivity(nextAct);
+
+            if(crs.getString(1).equalsIgnoreCase(password))
+            {
+                Intent nextAct = new Intent(this, MainActivity.class);
+                startActivity(nextAct);
+            }
+
+            else{
+                tv.setText("Wrong Password!\n Please Try Again!");
+            }
+
         }
         else {
             tv.setText("Account Does Not Exist! \nPlease click Create Account");

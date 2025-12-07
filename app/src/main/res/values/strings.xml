@@ -8,6 +8,7 @@
     <string name="enter_email">Enter Email</string>
     <string name="enter_password">Enter Password</string>
     <string name="continuetext">Continue</string>
+    <string name="searchs">Search by Cuisine or Type of Dining</string>
     <string name="search">Search</string>
     <string name="sign_in">Sign In</string>
     <string name="create_account">Create Account</string>
@@ -32,4 +33,5 @@
     <string name="image_of_restaurant">Image of restaurant</string>
     <string name="back">Back</string>
     <string name="order">Order</string>
+    <string name="add_review">Add Review</string>
 </resources>

@@ -1,10 +1,14 @@
 package com.example.restaurantadvisor.ui.home;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +18,12 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.restaurantadvisor.R;
 import com.example.restaurantadvisor.databinding.FragmentHomeBinding;
 import com.example.restaurantadvisor.restaurantinfo;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class HomeFragment extends Fragment {
 
@@ -41,6 +51,43 @@ public class HomeFragment extends Fragment {
         binding.mcdonalds.setOnClickListener(this::selectedRestaurant);
         binding.littlecaesars.setOnClickListener(this::selectedRestaurant);
         binding.kfc.setOnClickListener(this::selectedRestaurant);
+
+
+
+
+        Button search = (Button) root.findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v){
+                EditText iSearch = (EditText) root.findViewById(R.id.inputSearch);
+                String Search = iSearch.getText().toString();
+
+                TextView tv = (TextView) root.findViewById(R.id.displaySearchResult);
+
+                copyDatabaseIfNeeded();
+
+                String dbPath = getContext().getDatabasePath("restaurantinfo.sqlite").getPath();
+                SQLiteDatabase myDB = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READONLY);
+                String tablename = "restaurants";
+
+                String query = "SELECT restaurant_name FROM " + tablename + " WHERE type_of_dining LIKE '" + Search  + "'OR type_of_cuisine LIKE '" + Search + "';";
+                Cursor crs = myDB.rawQuery(query, null);
+
+                String result = "Results:\n";
+
+                if(crs.moveToFirst()){
+                    do{
+                        result += crs.getString(0) + "\n";
+                    } while (crs.moveToNext());
+                }
+                else
+                {
+                    result += "No Restaurant Found";
+                }
+
+                tv.setText(result);
+            }
+        });
 
 
         return root;
@@ -90,13 +137,34 @@ public class HomeFragment extends Fragment {
 
     }
 
-    public void startSearch (View v){
 
-        // This will take in the user input for search and try and find the restaurant
+    private void copyDatabaseIfNeeded() {
+        String dbName = "restaurantinfo.sqlite";
+        File dbFile = requireContext().getDatabasePath(dbName);
 
-        return;
+        if (dbFile.exists()) {
+            return;
+        }
+
+        dbFile.getParentFile().mkdirs();
+
+        try {
+            InputStream is = requireContext().getAssets().open("databases/" + dbName);
+            OutputStream os = new FileOutputStream(dbFile);
+
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+
+            os.flush();
+            os.close();
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error copying preloaded database");
+        }
     }
-
-
 
 }
