@@ -137,6 +137,7 @@ public class restaurantinfo extends AppCompatActivity {
     public void moveToReviews (View v)
     {
         Intent nextAct = new Intent(this, reviews.class);
+        nextAct.putExtra("restaurantname", restaurantName);
         startActivity(nextAct);
     }
 
