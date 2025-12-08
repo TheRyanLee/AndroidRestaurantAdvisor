@@ -1,11 +1,14 @@
 package com.example.restaurantadvisor;
 
+import static java.lang.Integer.parseInt;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -115,7 +118,7 @@ public class carryout extends AppCompatActivity {
             String priceString = "";
             if (crs3.moveToFirst())
                 do {
-                    priceString += crs3.getString(0) + "\n";
+                    priceString += crs3.getString(0) + "\n\n";
                 } while(crs3.moveToNext());
             else {
                 priceString = "No records in the database"; //crs.moveToFirst failed
@@ -130,6 +133,48 @@ public class carryout extends AppCompatActivity {
             tvC.setText(e.getMessage());
         }
 
+    }
+
+    public void takeOrder(View v){
+        TextView tvA = findViewById(R.id.textView8);
+        EditText orderInput = findViewById(R.id.orderInput);
+        String orderInputString = orderInput.getText().toString();
+        Integer itemNum = Integer.parseInt(orderInputString);
+
+        try {
+            SQLiteDatabase myDB = openOrCreateDatabase("/data/data/" + getPackageName() +
+                    "/databases/restaurantmenus.sqlite", MODE_PRIVATE, null) ;
+            String getItems = "SELECT ItemName FROM " + restaurantName + " WHERE ItemId = '" + itemNum + "'";
+            Cursor crs2 = myDB.rawQuery(getItems,null);
+            String minutesString = "";
+            if (crs2.moveToFirst())
+                do {
+                    minutesString += crs2.getString(0) + "\n";
+                } while(crs2.moveToNext());
+            else {
+                minutesString = "No records in the database"; //crs.moveToFirst failed
+                //tv.setText(minutesString);
+            }
+            crs2.close();
+            String getPrice = "SELECT Price FROM " + restaurantName + " WHERE ItemId = '" + itemNum + "'";
+            Cursor crs3 = myDB.rawQuery(getPrice,null);
+            String priceString = "";
+            if (crs3.moveToFirst())
+                do {
+                    priceString += crs3.getString(0) + "\n\n";
+                } while(crs3.moveToNext());
+            else {
+                priceString = "No records in the database"; //crs.moveToFirst failed
+                //tv.setText(minutesString);
+            }
+            tvA.setText("You Ordered " + minutesString + "\n Cost: "+ priceString);
+            crs3.close();
+            myDB.close();
+
+        }
+        catch( SQLiteException e) {
+            tvA.setText(e.getMessage());
+        }
     }
 
 
