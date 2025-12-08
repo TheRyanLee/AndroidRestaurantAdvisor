@@ -13,7 +13,7 @@
         android:layout_width="357dp"
         android:layout_height="52dp"
         android:gravity="center_horizontal|center_vertical"
-        android:text="Number of Stars"
+        android:text="@string/number_of_stars"
         android:textColor="@color/black"
         android:textSize="@dimen/smallertext"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,7 +66,7 @@
         tools:ignore="TextSizeCheck" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/enterReview"
         android:layout_width="359dp"
         android:layout_height="120dp"
         android:ems="10"
@@ -81,7 +81,7 @@
         app:layout_constraintVertical_bias="0.182" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/enterStar"
         android:layout_width="240dp"
         android:layout_height="80dp"
         android:ems="10"
@@ -98,6 +98,8 @@
         android:id="@+id/displayDebug"
         android:layout_width="378dp"
         android:layout_height="174dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:textColor="@android:color/holo_red_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"

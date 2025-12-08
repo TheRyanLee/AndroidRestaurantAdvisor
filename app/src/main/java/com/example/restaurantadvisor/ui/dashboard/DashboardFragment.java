@@ -1,5 +1,6 @@
 package com.example.restaurantadvisor.ui.dashboard;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.restaurantadvisor.R;
 import com.example.restaurantadvisor.databinding.FragmentDashboardBinding;
 
 public class DashboardFragment extends Fragment {

@@ -34,6 +34,7 @@
     <string name="back">Back</string>
     <string name="order">Order</string>
     <string name="add_review">Add Review</string>
-    <string name="enter_number_of_stars">Enter Number of Stars</string>
+    <string name="enter_number_of_stars">Enter Number of Stars (1-5)</string>
     <string name="enter_review">Enter Review</string>
+    <string name="number_of_stars">Number of Stars</string>
 </resources>

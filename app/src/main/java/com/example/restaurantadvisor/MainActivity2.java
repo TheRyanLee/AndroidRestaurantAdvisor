@@ -1,6 +1,7 @@
 package com.example.restaurantadvisor;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -135,6 +136,13 @@ public class MainActivity2 extends AppCompatActivity {
 
             if(crs.getString(1).equalsIgnoreCase(password))
             {
+
+                String spfile = getPackageName() + "prefs";
+                SharedPreferences sp = getSharedPreferences(spfile, MODE_PRIVATE);
+                SharedPreferences.Editor myEditor = sp.edit();
+                myEditor.putString("username", email);
+                myEditor.commit();
+
                 Intent nextAct = new Intent(this, MainActivity.class);
                 startActivity(nextAct);
             }

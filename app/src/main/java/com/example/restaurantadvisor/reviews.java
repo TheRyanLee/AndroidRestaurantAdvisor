@@ -56,6 +56,8 @@ public class reviews extends AppCompatActivity {
                 count++;
             } while(crs.moveToNext());
 
+        crs.close();
+        myDB.close();
 
         String starsText = "RATED \n" + String.format("%.1f", (stars/count)) + " Stars out of 5 Stars";
 
