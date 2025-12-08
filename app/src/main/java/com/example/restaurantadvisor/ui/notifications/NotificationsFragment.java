@@ -1,6 +1,8 @@
 package com.example.restaurantadvisor.ui.notifications;
 
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +36,27 @@ public class NotificationsFragment extends Fragment {
 
         // This is only temp
         tv.setText(username);
+
+
+        String dbPath = requireActivity().getDatabasePath("restaurantreviews.sqlite").getPath();
+        SQLiteDatabase myDB = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
+
+        String tableName = username.replaceAll("[^a-zA-Z0-9_]", "_");
+
+        String query = "SELECT * FROM " + tableName + ";";
+        Cursor crs = myDB.rawQuery(query, null);
+
+        String reviews = "";
+
+        if (crs.moveToFirst())
+            do {
+                reviews += crs.getString(1) + " " + crs.getInt(0) + "Stars\n";
+            } while(crs.moveToNext());
+
+        crs.close();
+        myDB.close();
+
+        tv.setText(reviews);
 
 //        final TextView textView = binding.textNotifications;
 //        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
