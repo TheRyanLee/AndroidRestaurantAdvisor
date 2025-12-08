@@ -8,6 +8,21 @@
     android:background="@color/backgroundColor"
     tools:context=".reviews">
 
+    <TextView
+        android:id="@+id/displayStars"
+        android:layout_width="383dp"
+        android:layout_height="121dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Will display 1 2 3 4 or 5 stars"
+        android:textSize="@dimen/smallertext"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.675" />
+
     <Button
         android:id="@+id/button10"
         android:layout_width="167dp"
@@ -22,10 +37,11 @@
         app:layout_constraintVertical_bias="0.867" />
 
     <TextView
-        android:id="@+id/displayInfo2"
-        android:layout_width="387dp"
-        android:layout_height="486dp"
+        android:id="@+id/dispalyReviews"
+        android:layout_width="388dp"
+        android:layout_height="444dp"
         android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal|center_vertical"
         android:text="Reviews for a specific restaurant will go here will probably list first 3 reviews"
         android:textSize="@dimen/smallertext"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,4 +63,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.98" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
