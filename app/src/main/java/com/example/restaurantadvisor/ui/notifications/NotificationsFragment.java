@@ -34,29 +34,31 @@ public class NotificationsFragment extends Fragment {
 
         TextView tv = (TextView) root.findViewById(R.id.displayReviews);
 
-        // This is only temp
-        tv.setText(username);
 
+        try {
+            String dbPath = requireActivity().getDatabasePath("restaurantreviews.sqlite").getPath();
+            SQLiteDatabase myDB = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
 
-        String dbPath = requireActivity().getDatabasePath("restaurantreviews.sqlite").getPath();
-        SQLiteDatabase myDB = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
+            String tableName = username.replaceAll("[^a-zA-Z0-9_]", "_");
 
-        String tableName = username.replaceAll("[^a-zA-Z0-9_]", "_");
+            String query = "SELECT * FROM " + tableName + ";";
+            Cursor crs = myDB.rawQuery(query, null);
 
-        String query = "SELECT * FROM " + tableName + ";";
-        Cursor crs = myDB.rawQuery(query, null);
+            String reviews = "";
 
-        String reviews = "";
+            if (crs.moveToFirst())
+                do {
+                    reviews += "Reviewed " + crs.getString(0) + ": " + crs.getString(2) + " " + crs.getInt(1) + " Stars\n\n";
+                } while (crs.moveToNext());
 
-        if (crs.moveToFirst())
-            do {
-                reviews += crs.getString(1) + " " + crs.getInt(0) + "Stars\n";
-            } while(crs.moveToNext());
+            crs.close();
+            myDB.close();
 
-        crs.close();
-        myDB.close();
+            tv.setText(reviews);
 
-        tv.setText(reviews);
+        } catch (Exception e) {
+            tv.setText("No Reviews Left");
+        }
 
 //        final TextView textView = binding.textNotifications;
 //        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);

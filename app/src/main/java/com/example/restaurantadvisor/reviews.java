@@ -82,6 +82,7 @@ public class reviews extends AppCompatActivity {
     public void addReview (View v)
     {
         Intent nextAct = new Intent(this, addReview.class);
+        nextAct.putExtra("restaurantname", restaurantName);
         startActivity(nextAct);
     }
 

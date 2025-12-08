@@ -100,6 +100,7 @@
         android:layout_height="174dp"
         android:gravity="center_horizontal|center_vertical"
         android:textColor="@android:color/holo_red_dark"
+        android:textSize="@dimen/smallertext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"

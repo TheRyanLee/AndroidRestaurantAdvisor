@@ -15,12 +15,17 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class addReview extends AppCompatActivity {
+    private String restaurantName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_add_review);
+
+        restaurantName = getIntent().getStringExtra("restaurantname");
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -64,20 +69,25 @@ public class addReview extends AppCompatActivity {
 
             String tableName = username.replaceAll("[^a-zA-Z0-9_]", "_");
 
-            String createTable = "CREATE TABLE IF NOT EXISTS " + tableName + " (stars INTEGER, customerReviews TEXT)";
+            // myDB.execSQL("DROP TABLE IF EXISTS + " tableName); // This is for deleting a table that already exists sort of resets it
+
+            String createTable = "CREATE TABLE IF NOT EXISTS " + tableName + " (restaurantName TEXT, stars INTEGER, customerReviews TEXT)";
             myDB.execSQL(createTable);
 
-            String insertSql = "INSERT INTO " + tableName + " (stars, customerReviews) VALUES (?, ?)";
-            myDB.execSQL(insertSql, new Object[]{stars, review});
+            String insertSql = "INSERT INTO " + tableName + " (restaurantName, stars, customerReviews) VALUES (?, ?, ?)";
+            myDB.execSQL(insertSql, new Object[]{restaurantName, stars, review});
 
             myDB.close();
-        }
 
+            Intent nextAct = new Intent(this, MainActivity.class);
+            startActivity(nextAct);
+        }
     }
 
     public void goBack1 (View v)
     {
         Intent nextAct = new Intent(this, reviews.class);
+        nextAct.putExtra("restaurantname", restaurantName);
         startActivity(nextAct);
     }
 
