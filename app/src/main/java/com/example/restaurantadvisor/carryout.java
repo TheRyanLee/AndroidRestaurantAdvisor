@@ -3,6 +3,7 @@ package com.example.restaurantadvisor;
 import static java.lang.Integer.parseInt;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -136,6 +137,9 @@ public class carryout extends AppCompatActivity {
     }
 
     public void takeOrder(View v){
+        String sp = getPackageName() + "prefs";
+        SharedPreferences sps = getSharedPreferences(sp,MODE_PRIVATE);
+        String username = sps.getString("username","unknown");
         TextView tvA = findViewById(R.id.textView8);
         EditText orderInput = findViewById(R.id.orderInput);
         String orderInputString = orderInput.getText().toString();
@@ -169,6 +173,13 @@ public class carryout extends AppCompatActivity {
             }
             tvA.setText("You Ordered " + minutesString + "\n Cost: "+ priceString);
             crs3.close();
+            String tableName = username.replaceAll("[^a-zA-Z0-9_]", "_");
+            String createTable = "CREATE TABLE IF NOT EXISTS "+ tableName + "(restaurantName TEXT, items TEXT, price DOUBLE)";
+            myDB.execSQL(createTable);
+
+
+            String insertSql = "INSERT INTO "+ tableName + "(restaurantName, items, price) VALUES (?, ?, ?)";
+            myDB.execSQL(insertSql, new Object[]{restaurantName, minutesString, priceString});
             myDB.close();
 
         }
