@@ -40,6 +40,7 @@
         android:id="@+id/textView8"
         android:layout_width="381dp"
         android:layout_height="47dp"
+        android:gravity="center_horizontal|center_vertical"
         app:layout_constraintBottom_toTopOf="@+id/button6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
@@ -61,8 +62,8 @@
         app:layout_constraintVertical_bias="0.721" />
 
     <ScrollView
-        android:layout_width="396dp"
-        android:layout_height="480dp"
+        android:layout_width="406dp"
+        android:layout_height="479dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
@@ -77,21 +78,22 @@
 
             <TextView
                 android:id="@+id/displayInfo3"
-                android:layout_width="97dp"
+                android:layout_width="52dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:textSize="@dimen/smallertext" />
 
             <TextView
                 android:id="@+id/displayInfo4"
-                android:layout_width="199dp"
+                android:layout_width="283dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:textSize="@dimen/smallertext" />
+                android:textSize="@dimen/smallertext"
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:id="@+id/displayInfo5"
-                android:layout_width="146dp"
+                android:layout_width="69dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:textSize="@dimen/smallertext" />

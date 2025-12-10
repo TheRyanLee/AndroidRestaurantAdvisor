@@ -106,7 +106,14 @@ public class carryout extends AppCompatActivity {
             String minutesString = "";
             if (crs2.moveToFirst())
                 do {
-                    minutesString += crs2.getString(0) + "\n\n";
+                    String temp = crs2.getString(0);
+                    if (temp.length() < 25)
+                    {
+                        temp += "\n";
+                    }
+
+                    minutesString += temp + "\n\n";
+
                 } while(crs2.moveToNext());
             else {
                 minutesString = "No records in the database"; //crs.moveToFirst failed
@@ -171,7 +178,7 @@ public class carryout extends AppCompatActivity {
                 priceString = "No records in the database"; //crs.moveToFirst failed
                 //tv.setText(minutesString);
             }
-            tvA.setText("You Ordered " + minutesString + "\n Cost: "+ priceString);
+            tvA.setText("Order Processed");
             crs3.close();
             String tableName = username.replaceAll("[^a-zA-Z0-9_]", "_");
             String createTable = "CREATE TABLE IF NOT EXISTS "+ tableName + "(restaurantName TEXT, items TEXT, price DOUBLE)";
