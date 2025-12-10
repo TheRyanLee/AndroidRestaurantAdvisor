@@ -93,7 +93,7 @@ public class carryout extends AppCompatActivity {
             String orderNumString = "";
             if (crs.moveToFirst())
                 do {
-                    orderNumString += crs.getString(0) + "\n\n";
+                    orderNumString += crs.getString(0) + "\n\n\n";
                 } while(crs.moveToNext());
             else {
                 orderNumString = "No records in the database"; //crs.moveToFirst failed
@@ -106,7 +106,7 @@ public class carryout extends AppCompatActivity {
             String minutesString = "";
             if (crs2.moveToFirst())
                 do {
-                    minutesString += crs2.getString(0) + "\n";
+                    minutesString += crs2.getString(0) + "\n\n";
                 } while(crs2.moveToNext());
             else {
                 minutesString = "No records in the database"; //crs.moveToFirst failed
@@ -119,7 +119,7 @@ public class carryout extends AppCompatActivity {
             String priceString = "";
             if (crs3.moveToFirst())
                 do {
-                    priceString += crs3.getString(0) + "\n\n";
+                    priceString += crs3.getString(0) + "\n\n\n";
                 } while(crs3.moveToNext());
             else {
                 priceString = "No records in the database"; //crs.moveToFirst failed
