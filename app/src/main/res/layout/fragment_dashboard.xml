@@ -42,7 +42,7 @@
                 android:layout_width="368dp"
                 android:layout_height="1358dp"
                 android:layout_gravity="center_horizontal"
-                android:text="Past orders will be displayed here (Need to code yet) Will pull in from database" />
+                android:text="@string/no_orders" />
         </LinearLayout>
     </ScrollView>
 
